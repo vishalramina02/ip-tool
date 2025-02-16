@@ -33,32 +33,9 @@ docker run --rm ip-tool --check-collision /path/to/ip_list.txt
 
 ---
 
-## **Kubernetes Deployment** (Optional)  
+## **Kubernetes Deployment**
 To deploy `ip-tool` on Kubernetes:  
 
-1. **Create a Deployment YAML (`ip-tool-deployment.yaml`)**  
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: ip-tool
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: ip-tool
-  template:
-    metadata:
-      labels:
-        app: ip-tool
-    spec:
-      containers:
-        - name: ip-tool
-          image: ip-tool:latest
-          command: ["python3", "main.py"]
-```
-
-2. **Deploy to Kubernetes**  
 ```sh
 kubectl apply -f ip-tool-deployment.yaml
 ```
